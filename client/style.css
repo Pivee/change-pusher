@@ -6,10 +6,12 @@ body {
 }
 
 .input-group {
+  margin: 10px;
   border: 1px solid grey;
   border-radius: 10px;
   padding-top: 0;
   padding: 20px;
+  width: -moz-fit-content;
   width: fit-content;
 }
 
@@ -19,4 +21,9 @@ body {
 
 .animal {
   border-color: lightgrey;
+}
+
+.users {
+  border-color: lightgrey;
+  width: 300px;
 }
