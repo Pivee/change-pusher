@@ -32,10 +32,16 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
     console.log(Object.keys(this.clientPool));
 
     if (this.clientPool[clientId]) {
+      /**
+       * This pushes an update on the Animal once every 2000ms.
+       */
       setInterval(() => {
         client.emit('GetNewAnimal', this.getNewAnimal());
       }, 2000);
 
+      /**
+       * This calls an external Users API and pushes the changes on Users once every 500ms.
+       */
       setInterval(() => {
         try {
           this.httpService.get('http://localhost:4000/users').subscribe({
