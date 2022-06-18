@@ -2,7 +2,10 @@
 
 POC: Client should be able to receive latest updates without having to send a request.
 
-This is implemented using NestJS + Socket.io.
+This is implemented using NestJS + Socket.io to do the following:
+
+  - push an update once every 2000ms.
+  - call an external API and push the changes once every 500ms.
 
 This POC demonstrates that the client can receive updates from the server using a socket connection that is kept-alive. The Client App is served using `@nestjs/serve-static`. It can be accessed at http://localhost:3000.
 
