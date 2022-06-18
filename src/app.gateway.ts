@@ -6,6 +6,7 @@ import {
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
+import { catchError, map } from 'rxjs';
 import { Server } from 'socket.io';
 import {
   adjectives,
@@ -36,13 +37,22 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
       }, 2000);
 
       setInterval(() => {
-        this.httpService
-          .get('http://localhost:4000/users')
-          .subscribe((response) => {
-            const { data } = response;
+        try {
+          this.httpService.get('http://localhost:4000/users').subscribe({
+            next: (response) => {
+              const { data } = response as any;
 
-            client.emit('GetUsers', { data });
+              client.emit('GetUsers', { data });
+            },
+            error: (error) => {
+              console.error(
+                '⚠️ Connection to http://localhost:4000/users failed',
+              );
+            },
           });
+        } catch (error) {
+          console.error(error);
+        }
       }, 500);
     }
   }
