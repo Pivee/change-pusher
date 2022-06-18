@@ -1,3 +1,4 @@
+import { HttpService } from '@nestjs/axios';
 import {
   OnGatewayConnection,
   OnGatewayDisconnect,
@@ -14,6 +15,8 @@ import {
 
 @WebSocketGateway()
 export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
+  constructor(private httpService: HttpService) {}
+
   @WebSocketServer()
   server: Server;
 
@@ -31,6 +34,16 @@ export class AppGateway implements OnGatewayConnection, OnGatewayDisconnect {
       setInterval(() => {
         client.emit('GetNewAnimal', this.getNewAnimal());
       }, 2000);
+
+      setInterval(() => {
+        this.httpService
+          .get('http://localhost:4000/users')
+          .subscribe((response) => {
+            const { data } = response;
+
+            client.emit('GetUsers', { data });
+          });
+      }, 500);
     }
   }
 
