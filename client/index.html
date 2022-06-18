@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,10 +8,23 @@
   <title>Change Pusher - Client</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <h1>Change Pusher Client</h1>
+
+  <div id="app">
+    <div class="last-updated-timstamp">
+      <sub>Last updated at: <span id="last-updated-at"></span></sub>
+    </div>
+    <div class="input-group">
+      <br>
+      <label for="animal">Animal: </label>
+      <input type="text" name="animal" id="animal" placeholder="Name of the Animal">
+    </div>
+  </div>
 
   <script src="/socket.io/socket.io.js"></script>
   <script src="app.js" defer></script>
 </body>
+
 </html>
