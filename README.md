@@ -14,3 +14,7 @@ In order to simulate fetching data from a third-party when the user is connected
 When both the servers are running, you can view the Client app at http://localhost:3000 on your browser, and try manipulating the records in `json/users.json` directly or via POST, PUT or DELETE requests to http://localhost:4000/users. It's API Documentation is available at http://localhost:4000.
 
 You can run this POC for a demo using `npm run start`, which has been modified to run both the Nest Application and the JSON-Server concurrently.
+
+```sh
+npm run start
+```
