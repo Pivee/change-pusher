@@ -4,3 +4,19 @@ body {
   margin: 0;
   margin-left: 40px;
 }
+
+.input-group {
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding-top: 0;
+  padding: 20px;
+  width: fit-content;
+}
+
+.input-group:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+.animal {
+  border-color: lightgrey;
+}
